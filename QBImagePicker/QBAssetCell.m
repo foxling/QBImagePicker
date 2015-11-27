@@ -7,10 +7,12 @@
 //
 
 #import "QBAssetCell.h"
+#import "QBCheckmarkView.h"
 
 @interface QBAssetCell ()
 
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
+@property (weak, nonatomic) IBOutlet QBCheckmarkView *markView;
 
 @end
 
@@ -21,7 +23,10 @@
     [super setSelected:selected];
     
     // Show/hide overlay view
-    self.overlayView.hidden = !(selected && self.showsOverlayViewWhenSelected);
+    if (self.showsOverlayViewWhenSelected) {
+        self.overlayView.backgroundColor = selected ? [UIColor colorWithWhite:0 alpha:0.4] : [UIColor clearColor];
+        self.markView.selected = selected;
+    }
 }
 
 @end

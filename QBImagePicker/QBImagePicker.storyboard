@@ -212,7 +212,7 @@
                                                 <outlet property="timeLabel" destination="Xyt-p5-G2h" id="gha-W0-Ubz"/>
                                             </connections>
                                         </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lR8-T5-hPO">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lR8-T5-hPO">
                                             <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ir3-QL-Bht" customClass="QBCheckmarkView">
@@ -226,7 +226,7 @@
                                                 </view>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Ir3-QL-Bht" secondAttribute="bottom" constant="4" id="aCU-e5-VsJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ir3-QL-Bht" secondAttribute="trailing" constant="4" id="gvN-JJ-Rda"/>
@@ -261,6 +261,7 @@
                                 <connections>
                                     <outlet property="button" destination="EV2-Ai-4Am" id="eHz-ju-z2x"/>
                                     <outlet property="imageView" destination="OyZ-If-PAI" id="wMz-7M-jm4"/>
+                                    <outlet property="markView" destination="Ir3-QL-Bht" id="AWb-Cl-rr2"/>
                                     <outlet property="overlayView" destination="lR8-T5-hPO" id="XLf-92-PKa"/>
                                     <outlet property="videoIndicatorView" destination="Fit-2n-KG7" id="PfY-KL-kvq"/>
                                 </connections>

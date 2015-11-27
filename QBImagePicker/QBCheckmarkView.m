@@ -27,17 +27,19 @@
     self.layer.shadowOffset = CGSizeMake(0, 0);
     self.layer.shadowOpacity = 0.6;
     self.layer.shadowRadius = 2.0;
+    
+    self.selected = NO;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-    // Border
-    [self.borderColor setFill];
-    [[UIBezierPath bezierPathWithOvalInRect:self.bounds] fill];
-    
     // Body
     [self.bodyColor setFill];
-    [[UIBezierPath bezierPathWithOvalInRect:CGRectInset(self.bounds, self.borderWidth, self.borderWidth)] fill];
+    [[UIBezierPath bezierPathWithOvalInRect:self.bounds] fill];
+    
+    // Border
+    [self.borderColor setStroke];
+    [[UIBezierPath bezierPathWithOvalInRect:CGRectInset(self.bounds, self.borderWidth, self.borderWidth)] stroke];
     
     // Checkmark
     UIBezierPath *checkmarkPath = [UIBezierPath bezierPath];
@@ -49,6 +51,16 @@
     
     [self.checkmarkColor setStroke];
     [checkmarkPath stroke];
+}
+
+- (void)setSelected:(BOOL)selected {
+    _selected = selected;
+    if (selected) {
+        self.bodyColor = [UIColor colorWithRed:(20.0 / 255.0) green:(111.0 / 255.0) blue:(223.0 / 255.0) alpha:1.0];
+    } else {
+        self.bodyColor = [UIColor colorWithWhite:0 alpha:0.1];
+    }
+    [self setNeedsDisplay];
 }
 
 @end
