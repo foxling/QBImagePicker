@@ -15,6 +15,7 @@
 
 // ViewControllers
 #import "QBImagePickerController.h"
+#import "QBImagePreviewViewController.h"
 
 @interface QBImagePickerController (Private)
 
@@ -35,6 +36,8 @@
 @property (nonatomic, assign) BOOL disableScrollToBottom;
 @property (nonatomic, strong) NSIndexPath *indexPathForLastVisibleItem;
 @property (nonatomic, strong) NSIndexPath *lastSelectedItemIndexPath;
+
+@property (nonatomic, strong) QBImagePreviewViewController *previewController;
 
 @end
 
@@ -383,6 +386,8 @@
         [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
     
+    [cell.button addTarget:self action:@selector(tappedPreviewButton:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -552,6 +557,25 @@
     CGFloat width = (CGRectGetWidth(self.view.frame) - 2.0 * (numberOfColumns + 1)) / numberOfColumns;
     
     return CGSizeMake(width, width);
+}
+
+#pragma mark - Preview
+
+- (QBImagePreviewViewController *)previewController {
+    if (_previewController == nil) {
+        _previewController = [[QBImagePreviewViewController alloc] initWithNibName:nil bundle:nil];
+    }
+    return _previewController;
+}
+
+- (void)tappedPreviewButton:(UIButton *)button {
+    CGPoint point = [self.collectionView convertPoint:button.center fromView:button.superview];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+    if (indexPath) {
+        ALAsset *asset = self.assets[indexPath.item];
+        self.previewController.image = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+        [self presentViewController:self.previewController animated:NO completion:nil];
+    }
 }
 
 @end
