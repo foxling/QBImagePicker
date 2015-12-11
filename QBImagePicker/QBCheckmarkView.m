@@ -19,7 +19,7 @@
     self.checkmarkLineWidth = 1.2;
     
     self.borderColor = [UIColor whiteColor];
-    self.bodyColor = [UIColor colorWithRed:(20.0 / 255.0) green:(111.0 / 255.0) blue:(223.0 / 255.0) alpha:1.0];
+    self.bodyColor = [UIColor colorWithRed:(83.0 / 255.0) green:(196.0 / 255.0) blue:(201.0 / 255.0) alpha:1.0];
     self.checkmarkColor = [UIColor whiteColor];
     
     // Set shadow
@@ -56,7 +56,7 @@
 - (void)setSelected:(BOOL)selected {
     _selected = selected;
     if (selected) {
-        self.bodyColor = [UIColor colorWithRed:(20.0 / 255.0) green:(111.0 / 255.0) blue:(223.0 / 255.0) alpha:1.0];
+        self.bodyColor = [UIColor colorWithRed:(83.0 / 255.0) green:(196.0 / 255.0) blue:(201.0 / 255.0) alpha:1.0];
     } else {
         self.bodyColor = [UIColor colorWithWhite:0 alpha:0.1];
     }
